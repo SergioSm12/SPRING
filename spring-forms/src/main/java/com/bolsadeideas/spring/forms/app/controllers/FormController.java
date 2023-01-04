@@ -123,7 +123,7 @@ public class FormController {
         usuario.setApellido("Doe");
         //no lo requerimos en el formulario pero queremos mantener la informacion
 
-        usuario.setIdentificador("123.456.789-k");
+        usuario.setIdentificador("12.456.789-K");
         usuario.setHabilitar(true);
         usuario.setValorSecreto("Algun valor secreto ****");
         usuario.setPais(new Pais(6, "CO", "Colombia"));

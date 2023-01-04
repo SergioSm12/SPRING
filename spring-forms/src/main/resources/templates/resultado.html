@@ -7,9 +7,7 @@
 
 </head>
 <body>
-<div class="alert alert-success">
-    <span th:text="'Tiempo Transcurrido: '+${tiempoTranscurrido}+ ' en milisegundos'"></span>
-</div>
+<section th:replace="(~{componentes/tiempo :: interceptor})"></section>
 <h1 th:text="${titulo}" class="text-center"></h1>
 <div class="container">
     <a th:href="@{/form}" class="btn btn-success btn-lg my-3">volver</a>
