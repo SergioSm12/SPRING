@@ -1,0 +1,2 @@
+INSERT INTO users(id, name, last_name, email, create_at) VALUES(1,'Sergio','Mesa','sergio.mesa@usantoto.edu.co', '2023-01-03');
+INSERT INTO users(id, name, last_name, email, create_at) VALUES(2,'David','Buitrago','sergio.mesa2@usantoto.edu.co', '2022-12-07');
