@@ -1,2 +1,16 @@
-INSERT INTO clientes(id, nombre, apellido, email, create_at) VALUES(1,'Sergio','Mesa','sergio.mesa@usantoto.edu.co', '2023-01-03');
-INSERT INTO clientes(id, nombre, apellido, email, create_at) VALUES(2,'David','Buitrago','sergio.mesa2@usantoto.edu.co', '2022-12-07');
+INSERT INTO clientes(id, nombre, apellido, email, create_at, foto)VALUES (1, 'Sergio', 'Mesa', 'sergio.mesa@usantoto.edu.co', '2023-01-03', '');
+INSERT INTO clientes(id, nombre, apellido, email, create_at, foto)VALUES (2, 'David', 'Buitrago', 'sergio.mesa2@usantoto.edu.co', '2022-12-07', '');
+INSERT INTO clientes(id, nombre, apellido, email, create_at, foto)VALUES (3, 'David', 'Buitrago', 'sergio.mesa2@usantoto.edu.co', '2022-12-07', '');
+INSERT INTO clientes(id, nombre, apellido, email, create_at, foto)VALUES (4, 'David', 'Buitrago', 'sergio.mesa2@usantoto.edu.co', '2022-12-07', '');
+INSERT INTO clientes(id, nombre, apellido, email, create_at, foto)VALUES (5, 'David', 'Buitrago', 'sergio.mesa2@usantoto.edu.co', '2022-12-07', '');
+INSERT INTO clientes(id, nombre, apellido, email, create_at, foto)VALUES (6, 'David', 'Buitrago', 'sergio.mesa2@usantoto.edu.co', '2022-12-07', '');
+INSERT INTO clientes(id, nombre, apellido, email, create_at, foto)VALUES (7, 'David', 'Buitrago', 'sergio.mesa2@usantoto.edu.co', '2022-12-07', '');
+INSERT INTO clientes(id, nombre, apellido, email, create_at, foto)VALUES (8, 'David', 'Buitrago', 'sergio.mesa2@usantoto.edu.co', '2022-12-07', '');
+INSERT INTO clientes(id, nombre, apellido, email, create_at, foto)VALUES (9, 'David', 'Buitrago', 'sergio.mesa2@usantoto.edu.co', '2022-12-07', '');
+INSERT INTO clientes(id, nombre, apellido, email, create_at, foto)VALUES (10, 'David', 'Buitrago', 'sergio.mesa2@usantoto.edu.co', '2022-12-07', '');
+INSERT INTO clientes(id, nombre, apellido, email, create_at, foto)VALUES (11, 'David', 'Buitrago', 'sergio.mesa2@usantoto.edu.co', '2022-12-07', '');
+INSERT INTO clientes(id, nombre, apellido, email, create_at, foto)VALUES (12, 'David', 'Buitrago', 'sergio.mesa2@usantoto.edu.co', '2022-12-07', '');
+INSERT INTO clientes(id, nombre, apellido, email, create_at, foto)VALUES (13, 'David', 'Buitrago', 'sergio.mesa2@usantoto.edu.co', '2022-12-07', '');
+INSERT INTO clientes(id, nombre, apellido, email, create_at, foto)VALUES (14, 'David', 'Buitrago', 'sergio.mesa2@usantoto.edu.co', '2022-12-07', '');
+INSERT INTO clientes(id, nombre, apellido, email, create_at, foto)VALUES (15, 'David', 'Buitrago', 'sergio.mesa2@usantoto.edu.co', '2022-12-07', '');
+INSERT INTO clientes(id, nombre, apellido, email, create_at, foto)VALUES (16, 'David', 'Buitrago', 'sergio.mesa2@usantoto.edu.co', '2022-12-07', '');
