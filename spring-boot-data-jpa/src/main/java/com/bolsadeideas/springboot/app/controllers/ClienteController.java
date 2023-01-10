@@ -42,7 +42,7 @@ public class ClienteController {
         try {
             recurso = uploadFileService.load(filename);
         } catch (MalformedURLException e) {
-            // TODO Auto-generated catch block
+
             e.printStackTrace();
         }
 
@@ -129,7 +129,7 @@ public class ClienteController {
             return "redirect:/listar";
         }
         model.addAttribute("cliente", cliente);
-        model.addAttribute("titulo", "El id del cliente no puede ser cero!");
+        model.addAttribute("titulo", "Editar");
         return "form";
     }
 
