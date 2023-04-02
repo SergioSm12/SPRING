@@ -1,5 +1,6 @@
 package com.prueba.crud.app.models.service;
 
+import com.prueba.crud.app.models.entity.Product;
 import com.prueba.crud.app.models.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -18,5 +19,6 @@ public interface IUserService {
 
     //Metodo para paginacion
     public Page<User> findAll(Pageable pageable);
+    public List<Product> findByName(String term);
 
 }

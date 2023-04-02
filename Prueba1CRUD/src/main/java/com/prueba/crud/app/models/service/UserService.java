@@ -1,7 +1,9 @@
 package com.prueba.crud.app.models.service;
 
+import com.prueba.crud.app.dao.IProductDao;
 import com.prueba.crud.app.dao.IUserDao;
 import com.prueba.crud.app.dao.IUserPagination;
+import com.prueba.crud.app.models.entity.Product;
 import com.prueba.crud.app.models.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,6 +22,9 @@ public class UserService implements IUserService {
     @Autowired
     private IUserPagination pagination;
 
+    @Autowired
+    private IProductDao productDao;
+
     @Override
     @Transactional(readOnly = true)
     public List<User> findAll() {
@@ -30,6 +35,12 @@ public class UserService implements IUserService {
     @Transactional(readOnly = true)
     public Page<User> findAll(Pageable pageable) {
         return pagination.findAll(pageable);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<Product> findByName(String term) {
+        return productDao.findByName(term);
     }
 
     @Override

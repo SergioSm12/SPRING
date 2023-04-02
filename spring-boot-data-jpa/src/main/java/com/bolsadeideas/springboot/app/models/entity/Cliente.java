@@ -7,7 +7,9 @@ import jakarta.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "clientes")
@@ -27,7 +29,17 @@ public class Cliente implements Serializable {
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date createAt;
+
+    //cascade type.all hace los delete en cascada igual los persiste
+    //mappedBy dice con que atributo se va a mapear a la otra clase
+    //orphanRemoval sirve para eliminar registros huerfanos
+    @OneToMany(mappedBy ="cliente",fetch = FetchType.LAZY, cascade = CascadeType.ALL,orphanRemoval = true)//un cliente tiene muchas facturas
+    private List<Factura> facturas;
     private String foto;
+
+    public Cliente() {
+        facturas = new ArrayList<Factura>();
+    }
 
     public Long getId() {
         return id;
@@ -75,6 +87,18 @@ public class Cliente implements Serializable {
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public List<Factura> getFacturas() {
+        return facturas;
+    }
+
+    public void setFacturas(List<Factura> facturas) {
+        this.facturas = facturas;
+    }
+
+    public void addFactura(Factura factura) {
+        facturas.add(factura);
     }
 
     private static final long serialVersionUID = 1L;

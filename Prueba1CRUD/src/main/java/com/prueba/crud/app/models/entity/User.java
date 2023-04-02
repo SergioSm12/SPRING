@@ -7,7 +7,9 @@ import jakarta.validation.constraints.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -31,6 +33,12 @@ public class User implements Serializable {
     private Date createAt;
 
     private String foto;
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Invoice> invoices;
+
+    public User() {
+        this.invoices=new ArrayList<Invoice>();
+    }
 
     public Long getId() {
         return id;
@@ -78,6 +86,18 @@ public class User implements Serializable {
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public List<Invoice> getInvoices() {
+        return invoices;
+    }
+
+    public void setInvoices(List<Invoice> invoices) {
+        this.invoices = invoices;
+    }
+
+    public void addInvoice(Invoice invoice) {
+        this.invoices.add(invoice);
     }
 
     private static final long serialVersionUID = 1L;

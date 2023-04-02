@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<script type="text/javascript" th:fragment="javascript">
+    $(document).ready(function () {
+        $("#search_product").autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/invoice/upload-products/" + request.term,
+                    dataType: "json",
+                    data: {
+                        term: request.term
+                    },
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return {
+                                value: item.id,
+                                label: item.name,
+                                price: item.price
+                            };
+                        }));
+                    },
+                });
+            },
+            select: function (event, ui) {
+                if (itemsHelper.hasProduct(ui.item.value)) {
+                    itemsHelper.incrementAmount(ui.item.value, ui.item.price);
+                    return false;
+                }
+                var line = $("#templateItemsInvoice").html();
+                line = line.replace(/{ID}/g, ui.item.value);
+                line = line.replace(/{NAME}/g, ui.item.label);
+                line = line.replace(/{PRICE}/g, ui.item.price);
+
+                $("#uploadItemProduct tbody").append(line);
+                itemsHelper.calculeteImport(ui.item.value, ui.item.price, 1);
+                return false;
+            }
+
+        });
+    });
+
+
+    var itemsHelper = {
+        calculeteImport: function (id, price, amount) {
+            $("#total_import_" + id).html(parseInt(price) * parseInt(amount));
+        },
+        hasProduct: function (id) {
+            var result = false;
+            $('input[name="item_id[]"]').each(function () {
+                if (parseInt(id) == parseInt($(this).val())) {
+                    result = true
+                }
+            });
+            return result;
+        },
+        incrementAmount: function (id, price) {
+            var amount = $("#amount_" + id).val() ? parseInt($("#cantidad_" + id).val()) : 0;
+            $("#amount_" + id).val(++amount);
+            this.calculeteImport(id, price, amount);
+        },
+        deleteLineInvoice: function (id) {
+            $("#row_" + id).remove();
+        }
+    }
+
+</script>
+</body>
+</html>
