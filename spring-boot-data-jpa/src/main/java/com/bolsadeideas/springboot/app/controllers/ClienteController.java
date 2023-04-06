@@ -1,6 +1,7 @@
 package com.bolsadeideas.springboot.app.controllers;
 
 import com.bolsadeideas.springboot.app.models.entity.Cliente;
+import com.bolsadeideas.springboot.app.models.service.ClienteService;
 import com.bolsadeideas.springboot.app.models.service.IClienteService;
 import com.bolsadeideas.springboot.app.models.service.IUploadFileService;
 import com.bolsadeideas.springboot.app.util.paginator.PageRender;
@@ -53,7 +54,9 @@ public class ClienteController {
 
     @GetMapping("/ver/{id}")
     public String ver(@PathVariable(value = "id") Long id, Model model, RedirectAttributes flash) {
-        Cliente cliente = clienteService.findOne(id);
+        //Cliente cliente = clienteService.findOne(id);
+        //Consulta optimisada
+        Cliente cliente = clienteService.fetchByIdWithFacturas(id);
         if (cliente == null) {
             flash.addFlashAttribute("error", "El cliente no existe en la base de datos");
             return "redirect:/listar";
@@ -64,7 +67,7 @@ public class ClienteController {
         return "ver";
     }
 
-    @RequestMapping(value = "/listar", method = RequestMethod.GET)
+    @RequestMapping(value = {"/listar","/"}, method = RequestMethod.GET)
     public String listar(@RequestParam(name = "page", defaultValue = "0") int page, Model model) {
         Pageable pageRequest = PageRequest.of(page, 4);
         Page<Cliente> clientes = clienteService.findAll(pageRequest);

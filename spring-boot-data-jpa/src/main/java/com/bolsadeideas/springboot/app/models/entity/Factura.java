@@ -1,6 +1,7 @@
 package com.bolsadeideas.springboot.app.models.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ public class Factura implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotEmpty
     private String descripcion;
     private String observacion;
     @Temporal(TemporalType.DATE)
@@ -21,7 +23,7 @@ public class Factura implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)//muchas facturas a un cliente- lazy solo realiza consultas cuando se le llama
     private Cliente cliente;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 //cascade type para que si se elimina un elemento se elimine en cascada
     //se pone por que no hay relacion en ambos sentidos
     @JoinColumn(name = "factura_id")//crea el campo factura id en itemfactura id
