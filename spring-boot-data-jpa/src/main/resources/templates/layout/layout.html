@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
     <meta charset="UTF-8"/>
     <title th:text="'Spring Boot: MVC + Thymeleaf + Data JPA - ' + ${titulo}"></title>
@@ -18,7 +18,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
@@ -26,6 +26,25 @@
                     <a class="nav-link" th:href="@{/listar}">Clientes</a>
                 </li>
             </ul>
+            <!--Boton de autenticacion-->
+            <ul class="navbar-nav navbar-right">
+                <li sec:authorize="!isAuthenticated()"><a class="btn btn-outline-primary" th:href="@{/login}">Sign
+                    In</a></li>
+                <li sec:authorize="isAuthenticated()" class="dropdown show">
+                    <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span sec:authentication="name"></span>
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <form id="logoutForm" th:action="@{/logout}" method="post">
+                            <button class="dropdown-item" onclick="document.getElementById('logoutForm').submit();" type="submit">Sign Out
+                            </button>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+
         </div>
     </nav>
     <div class="alert alert-success" th:if="${success != null}" th:text="${success}"></div>
@@ -41,6 +60,11 @@
 <footer th:fragment="footer" class="container text-center">
     <hr/>
     <i class="fa-sharp fa-solid fa-leaf"></i>
+    <!--Autorizacion por secciones de vista -->
+    <p sec:authorize="isAuthenticated()">
+        Usuario logeado: <span sec:authentication="name"></span> | Roles: <span
+            sec:authentication="principal.authorities"></span>
+    </p>
     <p>
         power by <a href="https://https://spring.io/projects/">Spring Boot
     </a><a href="http://www.thymeleaf.org">Thymeleaf</a>

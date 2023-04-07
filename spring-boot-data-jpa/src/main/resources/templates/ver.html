@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{layout/layout :: head}">
 </head>
 <body>
@@ -9,7 +9,8 @@
         <div class="card-header" th:text="${titulo}"></div>
         <div class="card-body">
             <h4 class="card-title">
-                <a class="btn btn-primary btn-xs" th:href="@{'/factura/form/'+${cliente.id}}"
+                <a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-primary btn-xs"
+                   th:href="@{'/factura/form/'+${cliente.id}}"
                 ><i class="fa-solid fa-file-invoice"></i> Crear Factura</a>
             </h4>
             <img th:if="${#strings.length(cliente.foto)>0}" class="img-thumbnail rounded float-left"
@@ -31,8 +32,8 @@
                     <th>descripcion</th>
                     <th>fecha</th>
                     <th>total</th>
-                    <th>Detalles</th>
-                    <th>Eliminar</th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')">Detalles</th>
+                    <th sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -41,9 +42,14 @@
                     <td th:text="${factura.descripcion}"></td>
                     <td th:text="${factura.createAt}"></td>
                     <td th:text="${factura.total}"></td>
-                    <td><a class="btn btn-primary" th:href="@{'/factura/ver/' + ${factura.id}}" th:text="'detalle'"></a>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')" class="text-center align-middle"><a class="btn btn-primary"
+                                                                 th:href="@{'/factura/ver/' + ${factura.id}}"><i
+                            class="fa-sharp fa-solid fa-pen-to-square"></i> Detalle</a>
                     </td>
-                    <td><a class="btn btn-danger" th:href="@{'/factura/eliminar/' + ${factura.id}}" th:text="'eliminar'" onclick="return confirm('¿Estas seguro que deseas eliminar la factura ?');"></a>
+                    <td sec:authorize="hasRole('ROLE_ADMIN')"  class="text-center align-middle"><a class="btn btn-danger"
+                                                                 th:href="@{'/factura/eliminar/' + ${factura.id}}"
+                                                                 onclick="return confirm('¿Estas seguro que deseas eliminar la factura ?');"><i
+                            class="fa-solid fa-trash"></i> Eliminar</a>
                     </td>
 
                 </tr>

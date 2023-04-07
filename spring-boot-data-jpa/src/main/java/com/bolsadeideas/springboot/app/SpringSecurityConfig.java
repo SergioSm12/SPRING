@@ -1,69 +1,78 @@
 package com.bolsadeideas.springboot.app;
 
+import com.bolsadeideas.springboot.app.auth.handler.LoginSuccesHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+
 import org.springframework.security.web.SecurityFilterChain;
 
+import javax.sql.DataSource;
+
 @Configuration
-@EnableMethodSecurity
+@EnableMethodSecurity(securedEnabled = true, prePostEnabled = true)
 public class SpringSecurityConfig {
-    @Bean
-    public static BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 
-    @Bean
-    public UserDetailsService userDetailsService() throws Exception {
+    @Autowired
+    private LoginSuccesHandler successHandler;
 
-        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-        manager.createUser(User
-                .withUsername("sergio")
-                .password(passwordEncoder().encode("12345"))
-                .roles("USER")
-                .build());
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
-        manager.createUser(User
-                .withUsername("admin")
-                .password(passwordEncoder().encode("admin"))
-                .roles("ADMIN", "USER")
-                .build());
+    @Autowired
+    private DataSource dataSource;
 
-        return manager;
-    }
-
-
-    //Intercepta la  url  atarves de  filterchain y valida si el usuario  tiene permisos
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-                .authorizeHttpRequests((authz) -> {
-                    try {
-                        authz.requestMatchers("/", "/css/**", "/js/**", "/images/**", "/listar").permitAll()
-                                .requestMatchers("/uploads/**").hasAnyRole("USER")
-                                .requestMatchers("/ver/**").hasAnyRole("USER")
-                                .requestMatchers("/factura/**").hasAnyRole("ADMIN")
-                                .requestMatchers("/form/**").hasAnyRole("ADMIN")
-                                .requestMatchers("/eliminar/**").hasAnyRole("ADMIN")
-                                .anyRequest().authenticated()
-                                .and()
-                                .formLogin()
-                                .permitAll()
-                                .and()
-                                .logout()
-                                .permitAll();
+        return http
+//                .csrf().disable()
+                .authorizeHttpRequests()
+                .requestMatchers("/", "/css/**", "/js/**", "/images/**", "/listar")
+                .permitAll()
+                /*.requestMatchers("/ver/**").hasAnyRole("USER")
+                .requestMatchers("/uploads/**").hasAnyRole("USER")
+                .requestMatchers("/form/**").hasAnyRole("ADMIN")
+                .requestMatchers("/delete/**").hasAnyRole("ADMIN")
+                .requestMatchers("/factura/**").hasAnyRole("ADMIN")*/
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .successHandler(successHandler)
+                .loginPage("/login")
+                .permitAll()
+                .and()
+                .logout().permitAll()
+                .and()
+                .exceptionHandling().accessDeniedPage("/error_403")
+                .and().build();
+    }
 
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
 
-        return http.build();
+    //Inyectando el bean no me funciono
+    /*@Bean
+    public AuthenticationManager authManager(HttpSecurity http) throws Exception {
+        return http.getSharedObject(AuthenticationManagerBuilder.class)
+                .jdbcAuthentication()
+                .dataSource(dataSource)
+                .passwordEncoder(passwordEncoder)
+                .usersByUsernameQuery("select username, password, enabled from users where username=?")
+                .authoritiesByUsernameQuery("select u.username, a.authority from authorities a inner join users u on (a.user_id=u.id) where u.username=?")
+                .and().build();
+    }*/
 
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder build) throws Exception {
+
+        build.jdbcAuthentication()
+                .dataSource(dataSource)
+                .passwordEncoder(passwordEncoder)
+                .usersByUsernameQuery("select username, password, enabled from users where username=?")
+                .authoritiesByUsernameQuery("select u.username, a.authority from authorities a inner join users u on (a.user_id=u.id) where u.username=?");
     }
 }
