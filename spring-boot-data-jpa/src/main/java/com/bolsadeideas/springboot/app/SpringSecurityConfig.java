@@ -1,6 +1,7 @@
 package com.bolsadeideas.springboot.app;
 
 import com.bolsadeideas.springboot.app.auth.handler.LoginSuccesHandler;
+import com.bolsadeideas.springboot.app.models.service.JpaUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,8 +26,17 @@ public class SpringSecurityConfig {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
+    //imprortacion para jdbc
+    /*
     @Autowired
-    private DataSource dataSource;
+    private DataSource dataSource;*/
+    @Autowired
+    private JpaUserDetailsService userDetailsService;
+
+    @Autowired
+    public void userDetailsService(AuthenticationManagerBuilder build) throws Exception{
+        build.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder);
+    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -66,6 +76,9 @@ public class SpringSecurityConfig {
                 .and().build();
     }*/
 
+    //Eeste si sirvio pero es para:
+    //Implementacion para jdbc "Recordar que con jdbc no se mapea solo se consulta "
+    /*
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder build) throws Exception {
 
@@ -74,5 +87,5 @@ public class SpringSecurityConfig {
                 .passwordEncoder(passwordEncoder)
                 .usersByUsernameQuery("select username, password, enabled from users where username=?")
                 .authoritiesByUsernameQuery("select u.username, a.authority from authorities a inner join users u on (a.user_id=u.id) where u.username=?");
-    }
+    }*/
 }

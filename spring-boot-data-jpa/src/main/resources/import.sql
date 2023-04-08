@@ -124,3 +124,12 @@ INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES(1,1,7);
 
 INSERT INTO facturas (descripcion, observacion, cliente_id, create_at) VALUES ('factura productos 2 ', 'alguna nota importante', 1, NOW());
 INSERT INTO facturas_items (cantidad, factura_id, producto_id) VALUES(3,2,10);
+
+/*Insert para usuarios*/
+INSERT INTO `users` (username, password, enabled) VALUES ('sergio', '$2a$10$JGWGGvBNZ5Fs1msCmBwIlezzdUZK5iv2Deh0EyFSC5elVUlXAIBQS',1);
+INSERT INTO `users` (username, password, enabled) VALUES ('admin', '$2a$10$mVEIexoUCCoA3amm.OOehO6aspRjlHgki3qM3kqwtjKANfA.owR46',1);
+
+/*Insert para roles*/
+INSERT INTO `authorities` (user_id, authority) VALUES (1,'ROLE_USER');
+INSERT INTO `authorities` (user_id, authority) VALUES (2,'ROLE_ADMIN');
+INSERT INTO `authorities` (user_id, authority) VALUES (2,'ROLE_USER');
