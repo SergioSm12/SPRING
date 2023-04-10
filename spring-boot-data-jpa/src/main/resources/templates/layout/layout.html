@@ -20,15 +20,15 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="#" th:text="#{text.menu.home}"> <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" th:href="@{/listar}">Clientes</a>
+                    <a class="nav-link" th:href="@{/listar}" th:text="#{text.menu.customer}">Clientes</a>
                 </li>
             </ul>
             <!--Boton de autenticacion-->
             <ul class="navbar-nav navbar-right">
-                <li sec:authorize="!isAuthenticated()"><a class="btn btn-outline-primary" th:href="@{/login}">Sign
+                <li sec:authorize="!isAuthenticated()"><a class="btn btn-outline-primary" th:href="@{/login}" th:text="#{text.menu.signin}">Sign
                     In</a></li>
                 <li sec:authorize="isAuthenticated()" class="dropdown show">
                     <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
@@ -38,13 +38,33 @@
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <form id="logoutForm" th:action="@{/logout}" method="post">
-                            <button class="dropdown-item" onclick="document.getElementById('logoutForm').submit();" type="submit">Sign Out
+                            <button class="dropdown-item" onclick="document.getElementById('logoutForm').submit();"
+                                    type="submit" th:text="#{text.menu.signout}">Sign Out
                             </button>
                         </form>
                     </div>
                 </li>
             </ul>
 
+            <ul class="navbar-nav navbar-right mx-4">
+                <li class="nav-item mx-1"><a class="btn btn-outline-success" th:href="@{/locale(lang=es_ES)}">ES</a>
+                </li>
+                <li class="nav-item mx-1"><a class="btn btn-outline-success" th:href="@{/locale(lang=en_US)}">EN</a>
+                </li>
+                <li class="nav-item mx-1"><a class="btn btn-outline-success" th:href="@{/locale(lang=de_DE)}">DE</a>
+                </li>
+                <li class="nav-item dropdown show mx-2">
+                    <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" id="dropdownLenguaje"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span th:text="#{text.locale.language}"></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" th:href="@{/locale(lang=es_ES)}" th:text="#{text.locale.es}">ES</a>
+                        <a class="dropdown-item" th:href="@{/locale(lang=en_US)}" th:text="#{text.locale.en}">EN</a>
+                        <a class="dropdown-item" th:href="@{/locale(lang=de_DE)}" th:text="#{text.locale.de}">DE</a>
+                    </div>
+                </li>
+            </ul>
         </div>
     </nav>
     <div class="alert alert-success" th:if="${success != null}" th:text="${success}"></div>
@@ -62,14 +82,14 @@
     <i class="fa-sharp fa-solid fa-leaf"></i>
     <!--Autorizacion por secciones de vista -->
     <p sec:authorize="isAuthenticated()">
-        Usuario logeado: <span sec:authentication="name"></span> | Roles: <span
+        <span th:text="#{text.footer.user}">Usuario logeado:</span> <span sec:authentication="name"></span> <span th:text="#{text.footer.roles}">| Roles</span> <span
             sec:authentication="principal.authorities"></span>
     </p>
-    <p>
+    <p th:utext="#{text.footer.powered}">
         power by <a href="https://https://spring.io/projects/">Spring Boot
     </a><a href="http://www.thymeleaf.org">Thymeleaf</a>
     </p>
-    <p>
+    <p th:utext="#{text.footer.copy}">
         Este proyecto fue desarrollado en IntellIJ IDEA 2022.3, Sergio Mesa, Andres Guzman.
         <br> &copy; Company 2022,INC.Todos los derechos reservados. Terminos de uso y privacidad. <br>
     </p>
