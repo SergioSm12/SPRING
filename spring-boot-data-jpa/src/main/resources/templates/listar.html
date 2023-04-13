@@ -11,7 +11,9 @@
         <div class="card-body">
             <h4 class="card-title"><a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-primary btn-xs"
                                       th:href="@{/form}" th:text="#{text.cliente.form.titulo.crear}">Crear Cliente</a>
+                <a class="btn btn-success btn-xs float-right" th:href="@{'/listar'(format=csv)}">CSV</a>
             </h4>
+
             <table class="table table-striped table-bordered">
                 <thead class="thead-inverse thead-dark">
                 <tr>
