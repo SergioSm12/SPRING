@@ -1,5 +1,6 @@
 package com.bolsadeideas.springboot.app.models.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -13,6 +14,8 @@ public class ItemFactura implements Serializable {
     private Integer cantidad;
     @ManyToOne(fetch = FetchType.LAZY)//muchos items van a tener un producto
     @JoinColumn(name = "producto_id")//Crea el atributo product_id en itemfacturas
+    //Atributo para que se pueda enviar los atributos de producto al json
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Producto producto;
 
     public Long getId() {

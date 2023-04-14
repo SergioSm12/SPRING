@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -43,7 +44,7 @@ public class MvcConfig implements WebMvcConfigurer {
 
     //Locale para internacionalizacion
     //resuleve donde se va guardar lo del interceptor en este caso en locale
-    @Bean(name ="localeResolver")
+    @Bean(name = "localeResolver")
     public LocaleResolver localeResolver() {
         SessionLocaleResolver localeResolver = new SessionLocaleResolver();
         localeResolver.setDefaultLocale(new Locale("es", "ES"));
@@ -59,6 +60,13 @@ public class MvcConfig implements WebMvcConfigurer {
         return localeInterceptor;
     }
 
+    //metodo para convertir vistas xml
+    @Bean
+    public Jaxb2Marshaller jaxb2Marshaller() {
+        Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
+        marshaller.setClassesToBeBound(new Class[]{com.bolsadeideas.springboot.app.view.xml.ClienteList.class});
+        return marshaller;
+    }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {

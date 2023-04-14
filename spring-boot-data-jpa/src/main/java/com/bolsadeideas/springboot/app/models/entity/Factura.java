@@ -1,8 +1,10 @@
 package com.bolsadeideas.springboot.app.models.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 
+import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -21,6 +23,8 @@ public class Factura implements Serializable {
     @Column(name = "create_at")
     private Date createAt;
     @ManyToOne(fetch = FetchType.LAZY)//muchas facturas a un cliente- lazy solo realiza consultas cuando se le llama
+    //Notacion para no cerializar cliente dentro del json.
+    @JsonBackReference
     private Cliente cliente;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
@@ -72,6 +76,7 @@ public class Factura implements Serializable {
         this.createAt = createAt;
     }
 
+    @XmlTransient
     public Cliente getCliente() {
         return cliente;
     }

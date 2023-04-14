@@ -1,5 +1,8 @@
 package com.bolsadeideas.springboot.app.models.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -28,12 +31,17 @@ public class Cliente implements Serializable {
     @Column(name = "create_at")//como se va llamar el campo en la base de datos
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    //Dar formato para json
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createAt;
 
     //cascade type.all hace los delete en cascada igual los persiste
     //mappedBy dice con que atributo se va a mapear a la otra clase
     //orphanRemoval sirve para eliminar registros huerfanos
-    @OneToMany(mappedBy ="cliente",fetch = FetchType.LAZY, cascade = CascadeType.ALL,orphanRemoval = true)//un cliente tiene muchas facturas
+    //un cliente tiene muchas facturas
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    //Se utilza para ver las facturas relacionadas al cliente en json ver tambien Entity Factura
+    @JsonManagedReference
     private List<Factura> facturas;
     private String foto;
 
@@ -103,7 +111,7 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return  nombre + " " + apellido ;
+        return nombre + " " + apellido;
     }
 
     private static final long serialVersionUID = 1L;
