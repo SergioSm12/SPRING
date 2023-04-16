@@ -1,7 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="21f14a2c-b3f7-4545-81c9-caad9a2df173" name="Changes" comment="" />
+    <list default="true" id="21f14a2c-b3f7-4545-81c9-caad9a2df173" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/spring-boot-data-jpa/src/main/java/com/bolsadeideas/springboot/app/controllers/ClienteRestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.metadata/.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.metadata/.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.metadata/.plugins/org.eclipse.core.resources/.projects/.org.eclipse.egit.core.cmp/.location" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/history.version" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.index" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.metadata/.plugins/org.eclipse.core.resources/.root/.indexes/properties.version" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.metadata/.plugins/org.eclipse.core.resources/.root/1.tree" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.metadata/.plugins/org.eclipse.core.resources/.safetable/org.eclipse.core.resources" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.metadata/.plugins/org.eclipse.e4.workbench/workbench.xmi" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.metadata/.plugins/org.eclipse.jdt.core/assumedExternalFilesCache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.metadata/.plugins/org.eclipse.jdt.core/externalFilesCache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.metadata/.plugins/org.eclipse.jdt.core/javaLikeNames.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.metadata/.plugins/org.eclipse.jdt.core/nonChainingJarsCache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.metadata/.plugins/org.eclipse.jdt.ui/OpenTypeHistory.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.metadata/.plugins/org.eclipse.jdt.ui/QualifiedTypeNameHistory.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.metadata/.plugins/org.eclipse.jdt.ui/dialog_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.metadata/.plugins/org.eclipse.m2e.core/workspaceState.ser" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.metadata/.plugins/org.eclipse.m2e.logback/0.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.1.0.20221015-0744.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.metadata/.plugins/org.eclipse.pde.core/.cache/clean-cache.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.metadata/.plugins/org.eclipse.tips.ide/dialog_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.metadata/.plugins/org.eclipse.ui.ide/dialog_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.metadata/.plugins/org.eclipse.ui.workbench/dialog_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.metadata/.plugins/org.eclipse.ui.workbench/workingsets.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.metadata/version.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/MvcConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/SpringBootDataJpaApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/SpringSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/auth/handler/LoginSuccesHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/controllers/ClienteController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/controllers/ClienteRestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/controllers/FacturaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/controllers/LocaleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/controllers/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/dao/IClienteDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/dao/IClienteDaoRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/dao/IFacturaDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/dao/IProductoDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/dao/IUsuarioDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/models/entity/Cliente.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/models/entity/Factura.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/models/entity/ItemFactura.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/models/entity/Producto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/models/entity/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/models/entity/Usuario.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/models/service/ClienteService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/models/service/IClienteService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/models/service/IUploadFileService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/models/service/JpaUserDetailsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/models/service/UploadFileService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/util/paginator/PageItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/util/paginator/PageRender.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/view/csv/ClienteCsvView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/view/json/ClienteListJsonView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/view/pdf/FacturaPdfView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/view/xlsx/FacturaXlsxView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/view/xml/ClienteList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/java/com/bolsadeideas/springboot/app/view/xml/ClienteListXmlView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/resources/import.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/resources/messages.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/resources/messages_de.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/resources/messages_en.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/resources/messages_es.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/resources/static/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/resources/static/css/jquery-ui.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/resources/static/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/resources/static/js/jquery-3.3.1.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/resources/static/js/jquery-ui.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/resources/static/js/popper.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/resources/templates/error_403.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/resources/templates/factura/form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/resources/templates/factura/js/autocomplete-productos.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/resources/templates/factura/plantilla-items.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/resources/templates/factura/ver.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/resources/templates/form.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/resources/templates/layout/layout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/resources/templates/listar.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/resources/templates/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/resources/templates/paginator-nav.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/main/resources/templates/ver.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/spring-boot-jwt/src/test/java/com/bolsadeideas/springboot/app/SpringBootDataJpaApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-data-jpa/src/main/java/com/bolsadeideas/springboot/app/SpringSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-data-jpa/src/main/java/com/bolsadeideas/springboot/app/SpringSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-boot-data-jpa/src/main/java/com/bolsadeideas/springboot/app/controllers/ClienteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-boot-data-jpa/src/main/java/com/bolsadeideas/springboot/app/controllers/ClienteController.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,10 +113,15 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Cursos/SPRING/workspace/spring-boot-form",
+    "last_opened_file_path": "C:/Cursos/SPRING/workspace/spring-boot-jwt",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Cursos\SPRING\workspace" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -34,7 +132,11 @@
       <updated>1672078247740</updated>
       <workItem from="1672078248485" duration="3000" />
       <workItem from="1672078268820" duration="13000" />
+      <workItem from="1681575253758" duration="56000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
