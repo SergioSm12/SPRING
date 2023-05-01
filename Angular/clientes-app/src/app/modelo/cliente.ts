@@ -18,4 +18,6 @@ export class Cliente {
     this.createAt=createAt;
     this.email=email;
   }
+
+  
 }
