@@ -14,6 +14,7 @@ export class FormComponent implements OnInit {
 
   public titulo: string = 'Crear cliente';
 
+  private errores: string[] = [];
   constructor(
     private clienteService: ClientesService,
     private router: Router,
@@ -35,24 +36,46 @@ export class FormComponent implements OnInit {
   }
 
   create(): void {
-    this.clienteService.create(this.cliente).subscribe((response) => {
-      this.router.navigate(['/clientes']);
-      swal.fire(
-        'Nuevo Cliente',
-        `Cliente ${this.cliente.nombre} creado con éxito!`,
-        'success'
-      );
-    });
+    this.clienteService.create(this.cliente).subscribe(
+      (response) => {
+        this.router.navigate(['/clientes']);
+        swal.fire(
+          'Nuevo Cliente',
+          `Cliente ${this.cliente.nombre} creado con éxito!`,
+          'success'
+        );
+      },
+      (err) => {
+        this.errores = err.error.errors as string[];
+        console.error('Codigo del error desde el backend: ' + err.status);
+
+        console.error(err.error.errors);
+      }
+    );
   }
 
   update(): void {
-    this.clienteService.update(this.cliente).subscribe((json) => {
-      this.router.navigate(['/clientes']);
-      swal.fire(
-        'Cliente Actualizado',
-        `Cliente ${json.cliente.nombre} Actualizado con exito`,
-        'success'
-      );
-    });
+    this.clienteService.update(this.cliente).subscribe(
+      (json) => {
+        this.router.navigate(['/clientes']);
+        swal.fire(
+          'Cliente Actualizado',
+          `Cliente ${json.cliente.nombre} Actualizado con exito`,
+          'success'
+        );
+      },
+      (err) => {
+        this.errores = err.error.errors as string[];
+        console.error('Codigo del error desde el backend: ' + err.status);
+
+        console.error(err.error.errors);
+      }
+    );
   }
+
+  public get getErrores(): string[]{
+    return this.errores;
+  } 
+
+  
 }
